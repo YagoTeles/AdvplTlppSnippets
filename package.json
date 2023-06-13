@@ -1,0 +1,21 @@
+{
+  "name": "yadvplsnippets",
+  "displayName": "yAdvplSnippets",
+  "description": "Snippets para AdvPL e TLPP",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.79.0"
+  },
+  "publisher": "AdvPLTlppSnippets",
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "prw,tlpp,aph,prx",
+        "path": "./snippets/snippets.code-snippets"
+      }
+    ]
+  }
+}

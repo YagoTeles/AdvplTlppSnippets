@@ -1,0 +1,182 @@
+{
+	"Inicia uma consulta query padrão": {
+		"prefix": "yQueryWhile",
+		"body": [
+		  "${2:element} := \"SELECT XXX_XXX FROM \"+RetSqlName(\"${1:element}\")+\" ${1:element} \" ",
+		  "${2:element} += \"WHERE XXX_FILIAL='\"+xFilial(\"${1:element}\")+\"' \" ",
+		  "${2:element} += \"AND ${1:element}.D_E_L_E_T_=' ' \" ",
+		  "${3:element} := MPSysOpenQuery(${2:element})",
+		  "",
+		  "(${3:element})->(dbGoTop())",
+		  "While (${3:element})->(!EOF())",
+		  "      ",
+		  "    (${3:element})->(DbSkip())",
+		  "ENDDO"
+		],
+		"description": "Inicia uma consulta query padrão"
+	  },
+	  "Monta uma estrutura basica MVC Modelo 1": {
+		"prefix": "yMvcModelo1",
+		"body": [
+		  "#Include 'Protheus.ch'",
+		  "#Include 'FWMVCDef.ch'",
+		  " ",
+		  "Static cTitulo := \"TITULO-------------------------------------\"",
+		  " ",
+		  "User Function ${1:element}()",
+		  "    Local aArea   := GetArea()",
+		  "    Local oBrowse",
+		  "    Local cFunBkp := FunName()",
+		  "    ",
+		  "    oBrowse := FWMBrowse():New()",
+		  "    oBrowse:SetAlias(\"${2:element}\")",
+		  "    oBrowse:SetDescription(cTitulo)",
+		  "    oBrowse:Activate()",
+		  "     ",
+		  "    SetFunName(cFunBkp)",
+		  "    RestArea(aArea)",
+		  "Return Nil",
+		  " ",
+		  "Static Function MenuDef()",
+		  "    Local aRot := {}",
+		  "     ",
+		  "    ADD OPTION aRot TITLE 'Visualizar' ACTION 'VIEWDEF.${1:element}' OPERATION MODEL_OPERATION_VIEW   ACCESS 0 ",
+		  "    ADD OPTION aRot TITLE 'Legenda'    ACTION 'u_zMod1Leg'      OPERATION 6                      ACCESS 0 ",
+		  "    ADD OPTION aRot TITLE 'Incluir'    ACTION 'VIEWDEF.${1:element}' OPERATION MODEL_OPERATION_INSERT ACCESS 0 ",
+		  "    ADD OPTION aRot TITLE 'Alterar'    ACTION 'VIEWDEF.${1:element}' OPERATION MODEL_OPERATION_UPDATE ACCESS 0 ",
+		  "    ADD OPTION aRot TITLE 'Excluir'    ACTION 'VIEWDEF.${1:element}' OPERATION MODEL_OPERATION_DELETE ACCESS 0 ",
+		  " ",
+		  "Return aRot",
+		  " ",
+		  " ",
+		  "Static Function ModelDef()",
+		  "    Local oModel := Nil",
+		  "    Local oSt${2:element} := FWFormStruct(1, \"${2:element}\")",
+		  "    ",
+		  "    oModel := MPFormModel():New(\"${1:element}M\",/*bPre*/, /*bPos*/,/*bCommit*/,/*bCancel*/) ",
+		  "    oModel:AddFields(\"FORM${2:element}\",/*cOwner*/,oSt${2:element})",
+		  "",
+		  "    //oModel:SetPrimaryKey({'${2:element}_FILIAL','${2:element}_COD'})",
+		  "",
+		  "    oModel:SetDescription(\"Modelo de Dados do Cadastro \"+cTitulo)",
+		  "    oModel:GetModel(\"FORM${2:element}\"):SetDescription(\"Formulário do Cadastro \"+cTitulo)",
+		  "",
+		  "Return oModel",
+		  "",
+		  "Static Function ViewDef()",
+		  "    Local oModel := FWLoadModel(\"${1:element}\")",
+		  "    Local oSt${2:element} := FWFormStruct(2, \"${2:element}\")",
+		  "    Local oView := Nil",
+		  "",
+		  "    oView := FWFormView():New()",
+		  "    oView:SetModel(oModel)",
+		  "    oView:AddField(\"VIEW_${2:element}\", oSt${2:element}, \"FORM${2:element}\")",
+		  "    oView:CreateHorizontalBox(\"TELA\",100)",
+		  "    oView:EnableTitleView('VIEW_${2:element}', 'Dados - '+cTitulo )  ",
+		  "    oView:SetCloseOnOk({||.T.})",
+		  "    oView:SetOwnerView(\"VIEW_${2:element}\",\"TELA\")",
+		  "     ",
+		  "Return oView"
+		],
+		"description": "Monta uma estrutura basica MVC Modelo 1"
+	  },
+	  "DbSelectArea+DbSeek": {
+		"prefix": "yDbSeek",
+		"body": [
+		  "DbSelectArea(\"${1:element}\")",
+		  "${1:element}->(DbSetOrder(1))",
+		  "${1:element}->(DbGoTop())",
+		  "${1:element}->(DbSeek(FWxFilial(\"${1:element}\") + ))"
+		],
+		"description": "DbSelectArea+DbSeek"
+	  },
+	  "IF + ENDIF": {
+		"prefix": "yIF",
+		"body": [
+		  "IF",
+		  "",
+		  "ENDIF"
+		],
+		"description": "IF + ENDIF"
+	  },
+	  "IF + ENDIF + ELSE": {
+		"prefix": "yIFeELSE",
+		"body": [
+		  "IF",
+		  "",
+		  "ELSE",
+		  "",
+		  "ENDIF"
+		],
+		"description": "IF + ENDIF"
+	  },
+	  "FwAlertError": {
+		"prefix": "yAlertError",
+		"body": [
+		  "FWAlertError(\"Mensagem de erro\", \"Título FWAlertError\")"
+		],
+		"description": "FwAlertError"
+	  },
+	  "FwAlertExitPage": {
+		"prefix": "yAlertExitPage",
+		"body": [
+		  "FWAlertExitPage(\"Mensagem de navegação de página\", \"Título FWAlertExitPage\")"
+		],
+		"description": "FwAlertExitPage"
+	  },
+	  "FWAlertInfo": {
+		"prefix": "yAlertInfo",
+		"body": [
+		  "FWAlertInfo(\"Mensagem informativa\", \"Título FWAlertInfo\")"
+		],
+		"description": "FWAlertInfo"
+	  },
+	  "FWAlertNoYes": {
+		"prefix": "yAlertNoYes",
+		"body": [
+		  "FWAlertNoYes(\"Mensagem de pergunta Não / Sim\", \"Título FWAlertNoYes\")"
+		],
+		"description": "FWAlertNoYes"
+	  },
+	  "FWAlertSuccess": {
+		"prefix": "yAlertSuccess",
+		"body": [
+		  "FWAlertSuccess(\"Mensagem de sucesso\", \"Título FWAlertSuccess\")"
+		],
+		"description": "FWAlertSuccess"
+	  },
+	  "FWAlertWarning": {
+		"prefix": "yAlertWarning",
+		"body": [
+		  "FWAlertWarning(\"Mensagem de aviso\", \"Título FWAlertWarning\")"
+		],
+		"description": "FWAlertWarning"
+	  },
+	  "FWAlertYesNo": {
+		"prefix": "yAlertYesNo",
+		"body": [
+		  "FWAlertYesNo(\"Mensagem de pergunta Sim / Não\", \"Título FWAlertYesNo\")"
+		],
+		"description": "FWAlertYesNo"
+	  },
+	  "Query com MpSysExecScalar": {
+		"prefix": "yMpSysExecScalar",
+		"body": [
+		  "${1:element} := \"SELECT ${3:element} FROM \"+RetSqlName(\"${2:element}\")+\" ${2:element} \" ",
+		  "${1:element} += \"WHERE XX_FILIAL='\"+xFilial(\"${2:element}\")+\"' AND ${2:element}.D_E_L_E_T_=' ' \" ",
+		  "",
+		  "${4:element} := MpSysExecScalar(${1:element},\"${3:element}\")"
+		],
+		"description": "Query com MpSysExecScalar"
+	  },
+	  "ForToLen": {
+		"prefix": "yForToLen",
+		"body": [
+		  "For ${1:element} := 1 to Len(${2:element})",
+		  "",
+		  "Next ${1:element}",
+		  ""
+		],
+		"description": "ForToLen"
+	  }
+}
