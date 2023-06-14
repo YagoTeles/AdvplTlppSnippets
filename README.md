@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img src="./logo/download.png" alt="Totvs Logo" width="200">
+    <img src="./logo/logo-totvs-h-gradient.png" alt="Totvs Logo" width="200">
     <br>
     Snippets para AdvPL/TLPP
 </h1>
