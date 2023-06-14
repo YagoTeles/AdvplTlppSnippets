@@ -13,7 +13,7 @@
 		  "    (${3:element})->(DbSkip())",
 		  "ENDDO"
 		],
-		"description": "Inicia uma consulta query padrão"
+		"description": "Inicia uma consulta query padrão",
 	  },
 	  "Monta uma estrutura basica MVC Modelo 1": {
 		"prefix": "yMvcModelo1",
