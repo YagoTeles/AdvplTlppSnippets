@@ -2,20 +2,24 @@
   "name": "yadvplsnippets",
   "displayName": "yAdvplSnippets",
   "description": "Snippets para AdvPL e TLPP",
-  "version": "0.0.1",
+  "version": "0.0.81",
   "engines": {
     "vscode": "^1.79.0"
   },
+  "icon": "./icons/advpl-icon.ico",
   "publisher": "AdvPLTlppSnippets",
   "categories": [
     "Snippets"
   ],
+  "repository": {
+    "url": "https://github.com/YagoTeles/AdvplTlppSnippets"
+  },
   "contributes": {
     "snippets": [
       {
-        "language": "prw,tlpp,aph,prx",
         "path": "./snippets/snippets.code-snippets"
       }
     ]
   }
+  
 }

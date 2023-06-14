@@ -79,6 +79,7 @@
 		  "Return oView"
 		],
 		"description": "Monta uma estrutura basica MVC Modelo 1"
+		
 	  },
 	  "DbSelectArea+DbSeek": {
 		"prefix": "yDbSeek",
@@ -88,7 +89,8 @@
 		  "${1:element}->(DbGoTop())",
 		  "${1:element}->(DbSeek(FWxFilial(\"${1:element}\") + ))"
 		],
-		"description": "DbSelectArea+DbSeek"
+		"description": "DbSelectArea+DbSeek",
+		
 	  },
 	  "IF + ENDIF": {
 		"prefix": "yIF",
@@ -98,6 +100,7 @@
 		  "ENDIF"
 		],
 		"description": "IF + ENDIF"
+		
 	  },
 	  "IF + ENDIF + ELSE": {
 		"prefix": "yIFeELSE",
@@ -109,6 +112,7 @@
 		  "ENDIF"
 		],
 		"description": "IF + ENDIF"
+		
 	  },
 	  "FwAlertError": {
 		"prefix": "yAlertError",
@@ -116,6 +120,7 @@
 		  "FWAlertError(\"Mensagem de erro\", \"Título FWAlertError\")"
 		],
 		"description": "FwAlertError"
+		
 	  },
 	  "FwAlertExitPage": {
 		"prefix": "yAlertExitPage",
@@ -123,6 +128,7 @@
 		  "FWAlertExitPage(\"Mensagem de navegação de página\", \"Título FWAlertExitPage\")"
 		],
 		"description": "FwAlertExitPage"
+		
 	  },
 	  "FWAlertInfo": {
 		"prefix": "yAlertInfo",
@@ -130,6 +136,7 @@
 		  "FWAlertInfo(\"Mensagem informativa\", \"Título FWAlertInfo\")"
 		],
 		"description": "FWAlertInfo"
+		
 	  },
 	  "FWAlertNoYes": {
 		"prefix": "yAlertNoYes",
@@ -137,6 +144,7 @@
 		  "FWAlertNoYes(\"Mensagem de pergunta Não / Sim\", \"Título FWAlertNoYes\")"
 		],
 		"description": "FWAlertNoYes"
+		
 	  },
 	  "FWAlertSuccess": {
 		"prefix": "yAlertSuccess",
@@ -144,6 +152,7 @@
 		  "FWAlertSuccess(\"Mensagem de sucesso\", \"Título FWAlertSuccess\")"
 		],
 		"description": "FWAlertSuccess"
+		
 	  },
 	  "FWAlertWarning": {
 		"prefix": "yAlertWarning",
@@ -151,6 +160,7 @@
 		  "FWAlertWarning(\"Mensagem de aviso\", \"Título FWAlertWarning\")"
 		],
 		"description": "FWAlertWarning"
+		
 	  },
 	  "FWAlertYesNo": {
 		"prefix": "yAlertYesNo",
@@ -158,6 +168,7 @@
 		  "FWAlertYesNo(\"Mensagem de pergunta Sim / Não\", \"Título FWAlertYesNo\")"
 		],
 		"description": "FWAlertYesNo"
+		
 	  },
 	  "Query com MpSysExecScalar": {
 		"prefix": "yMpSysExecScalar",
@@ -168,6 +179,7 @@
 		  "${4:element} := MpSysExecScalar(${1:element},\"${3:element}\")"
 		],
 		"description": "Query com MpSysExecScalar"
+		
 	  },
 	  "ForToLen": {
 		"prefix": "yForToLen",
@@ -178,5 +190,6 @@
 		  ""
 		],
 		"description": "ForToLen"
+		
 	  }
 }
