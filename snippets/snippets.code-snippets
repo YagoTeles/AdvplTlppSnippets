@@ -11,7 +11,8 @@
 		  "While (${3:element})->(!EOF())",
 		  "      ",
 		  "    (${3:element})->(DbSkip())",
-		  "ENDDO"
+		  "ENDDO",
+		  "(${3:element})->(DbCloseArea())"
 		],
 		"description": "Inicia uma consulta query padrão",
 	  },
@@ -191,5 +192,40 @@
 		],
 		"description": "ForToLen"
 		
+	  },
+	  "yRecLock": {
+		"prefix": "yRecLock",
+		"body": [
+		  "RecLock(\"${1:Alias}\", .T.)",
+		  "    ${1:Alias}->ZZZ_FILIAL := FWxFilial('${1:Alias}')",
+		  "    ${1:Alias}->ZZZ_CAMP01 := \"AAA\"",
+		  "${1:Alias}->(MsUnlock())"
+		],
+		"description": "Reclock Basico"
+	  },
+	  "yUserFunction": {
+		"prefix": "yUserFunction",
+		"body": [
+		  "User Function ${1:nome}()",
+		  "",
+		  "",
+		  "",
+		  "Return ${2:retorno}"
+		],
+		"description": "User Function Basica"
+	  },
+	  "FWExecView ": {
+		"prefix": "yExecView",
+		"body": [
+		  "FWExecView(\"${1:Str}\", \"VIEWDEF.${2:Str}\",3, , { || .T. }, , nil)"
+		],
+		"description": "FWExecView "
+	  },
+	  "Posicione": {
+		"prefix": "yPosicione",
+		"body": [
+		  "Posicione(\"${1:Str}\",1,${1:Str}->XX_FILIAL + ${1:Str}->${2:Str},\"${3:Str}\")"
+		],
+		"description": "Posicione"
 	  }
 }
